@@ -1,11 +1,11 @@
 import React, { useEffect, useCallback, useState } from "react";
-import { Container, Nav } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
 import { login, logout as destroy, accountBalance } from "./utils/near";
 import Wallet from "./components/Wallet";
 import { Notification } from "./components/utils/Notifications";
-import Products from "./components/marketplace/Products";
+import MessagesList from "./components/messages/MessagesList";
 import Cover from "./components/utils/Cover";
-import coverImg from "./assets/img/sandwich.jpg";
+import coverImg from "./assets/img/main.jpg";
 import "./App.css";
 
 const App = function AppWrapper() {
@@ -27,23 +27,31 @@ const App = function AppWrapper() {
     <>
       <Notification />
       {account.accountId ? (
-        <Container fluid="md">
-          <Nav className="justify-content-end pt-3 pb-5">
-            <Nav.Item>
-              <Wallet
-                address={account.accountId}
-                amount={balance}
-                symbol="NEAR"
-                destroy={destroy}
-              />
-            </Nav.Item>
-          </Nav>
-          <main>
-            <Products />
-          </main>
-        </Container>
+        <>
+          <Navbar>
+            <Container>
+              <Navbar.Brand href="/" className="fs-4 fw-bold mb-0">
+                كتاب الأصدقاء{" "}
+              </Navbar.Brand>
+              <Navbar.Toggle />
+              <Navbar.Collapse className="justify-content-end">
+                <Wallet
+                  address={account.accountId}
+                  amount={balance}
+                  symbol="NEAR"
+                  destroy={destroy}
+                />
+              </Navbar.Collapse>
+            </Container>
+          </Navbar>
+          <Container className="justify-content-center ">
+            <main>
+              <MessagesList login={login} account={account} />
+            </main>
+          </Container>
+        </>
       ) : (
-        <Cover name="Street Food" login={login} coverImg={coverImg} />
+        <Cover name="كتاب الأصدقاء" login={login} coverImg={coverImg} />
       )}
     </>
   );
