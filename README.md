@@ -20,6 +20,14 @@ npm install
 
 - في ملف config.js قم بتغيير حساب العقد الذكي إلى الحساب الذي قمت بنشر الكود عليه
 - قم بتنفيذ التعليمة التالية لبدء البرنامج
+### صورة عن صفحة الدخول :
+![image](https://user-images.githubusercontent.com/11816618/160421321-4710102b-2af5-4d37-8d0a-34f4cb46956a.png)
+
+
+
+### صورة عن الصفحة الرئيسية للبرنامج 
+![image](https://user-images.githubusercontent.com/11816618/160421068-3fc96688-653a-4122-826e-568ec4617178.png)
+
 
 ```
 npm start
