@@ -1,5 +1,10 @@
 import React from "react";
 import { Dropdown, Stack, Spinner } from "react-bootstrap";
+import {
+  CurrencyExchange,
+  PersonCircle,
+  BoxArrowRight,
+} from "react-bootstrap-icons";
 
 const Wallet = ({ address, amount, symbol, destroy }) => {
   if (address) {
@@ -23,14 +28,15 @@ const Wallet = ({ address, amount, symbol, destroy }) => {
               variant="light"
               align="end"
               id="dropdown-basic"
-              className="d-flex align-items-center border  py-1"
+              className="d-flex align-items-center border py-1"
             >
               {amount ? (
                 <>
-                  <Stack direction="horizontal" gap={2}>
-                    <i className="bi bi-currency-exchange fs-4" />
-                    {amount} <span className="ms-1"> {symbol}</span>
-                  </Stack>
+                  <CurrencyExchange className="ml-3" color="royalblue" />
+                  <span className="px-2">
+                    {" "}
+                    {amount} <span className="px-1"> - {symbol}</span>
+                  </span>
                 </>
               ) : (
                 <Spinner animation="border" size="sm" className="opacity-25" />
@@ -40,10 +46,9 @@ const Wallet = ({ address, amount, symbol, destroy }) => {
               href={`https://explorer.testnet.near.org/accounts/${address}`}
               target="_blank"
             >
-              <Stack direction="horizontal" gap={2}>
-                <i className="bi bi-person-circle fs-4" />
-                <span className="font-monospace">{address}</span>
-              </Stack>
+              <PersonCircle className="ml-3" color="royalblue" />
+
+              <span className="font-monospace px-2">{address}</span>
             </Dropdown.Item>
 
             <Dropdown.Divider />
@@ -54,8 +59,8 @@ const Wallet = ({ address, amount, symbol, destroy }) => {
                 destroy();
               }}
             >
-              <i className="bi bi-box-arrow-right me-2 fs-4" />
-              تسجيل الخروج
+              <BoxArrowRight className="ml-3 right " color="royalblue" />
+              <span className="font-monospace px-1"> تسجيل الخروج</span>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
